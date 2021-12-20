@@ -8,7 +8,7 @@ from post.models import Post
 from post.forms import Editform, Newform
 
 
-
+#vistas de login
 def showLogin(request):
     return render(request,'login.html')
 
@@ -52,13 +52,18 @@ def logout_view(request):
     return redirect('home')
 
 
+
+
+#vistas de admin2
 def showAdmin2(request):
     return render(request, 'admin2-home.html')
 
 
 def showAdmin2Post(request):
+    #obtengo el id usuario
+    id_user = request.user.id
     #Obtiene los post activos
-    result = Post.objects.filter(active = 1)
+    result = Post.objects.filter(user_id = id_user).filter(active = 1)
     #si la consulta fue exitosa
     if result:
         context = {'data':result}
@@ -94,7 +99,6 @@ def showAdmin2EditPost(request, id):
     return render(request, 'admin2-post-edit.html', context)
 
 
-
 def admin2DeletePost(request, id):
     #obtengo instancia de la busqueda por id
     result = get_object_or_404(Post, id = id)
@@ -106,7 +110,6 @@ def admin2DeletePost(request, id):
     else:
         #envio a pag. de error
         pass 
-
 
 
 def admin2NewPost(request):

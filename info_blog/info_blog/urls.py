@@ -31,8 +31,7 @@ urlpatterns = [
     #posts
     path('', postViews.allPost, name='home'),
     #comments
-    path('formComment', commentViews.showFormComments, name = 'showFormComments'),
-    path('saveComment/<id>', commentViews.saveComent, name = 'saveComment'),
+    path('saveComment', commentViews.saveComment, name = 'saveComment'),
     #admin2(propio)
     path('_admin2',views.showAdmin2, name = '_admin2'),
     path('_admin2-post',views.showAdmin2Post, name = '_admin2-post'),
