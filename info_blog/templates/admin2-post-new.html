@@ -1,0 +1,50 @@
+{% extends 'base-admin.html' %}
+
+
+{% block content %}
+<br><br><br>
+
+    <div class="div-container">
+        <h2>NEW POST</h2>
+    </div>
+
+    <br>
+    <div class="div-container" >
+        {% if msg %}
+        <div class="msg-container">
+            <div class="alert alert-success" role="alert">
+                {{msg}}
+            </div>
+            <a class="btn btn-primary" href="{% url '_admin2-post'%}">Back</a>
+        </div>
+            
+        {% else %}
+        <form action="" method="POST" enctype="multipart/form-data" style="width: 30%;">{% csrf_token %}
+    
+            {{form}}
+
+            <div class="mt-4">
+                <button class="config btn btn-primary" type="submit">save</button>
+                <a class="config btn btn-primary" href="{% url '_admin2-post' %}">cancel</a>
+            </div>
+        </form>
+        {% endif %}
+    </div>
+    <br><br>
+
+<style>
+    .bt{border: 1px solid blue;}
+
+    .div-container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+    }
+    .msg-container{
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+
+{% endblock content %}

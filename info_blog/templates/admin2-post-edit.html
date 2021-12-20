@@ -1,0 +1,56 @@
+{% extends 'base-admin.html' %}
+
+{% block content %}
+
+
+<br><br>
+<div class="div-edit-content">
+    <h2>Edit Post</h2>
+   
+    <br>
+    <div style="width: 30%;">
+        <form action="" method="POST">{% csrf_token %}
+    
+            {{form}}
+
+            <div class="mt-4">
+                <button class="config btn btn-primary" type="submit">save</button>
+                <a class="config btn btn-primary" href="{% url '_admin2-post' %}">cancel</a>
+            </div>
+        </form>
+    </div>
+
+</div>
+<br><br><br><br>
+
+
+<style>
+    .bt {
+        border: 1px solid blue;
+    }
+
+    .div-edit-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .config {
+        width: 20%;
+        color: white;
+        text-decoration: none;
+    }
+</style>
+
+<script>
+    
+    document.getElementById("txtArea").value = document.getElementById('txt-input').value
+    
+    
+    
+</script>
+
+
+{% endblock content %}

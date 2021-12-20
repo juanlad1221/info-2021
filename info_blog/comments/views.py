@@ -11,12 +11,8 @@ def saveComent(request, id):
     if request.method == "POST":
         newComment = request.POST.get("text-comment")
         email = request.POST.get('e-mail')
-        print(type(email))
-
-        if str(email) == 'NoneType':
-            email = User.email
-            print('entro')
-
-        #Comments.objects.create(newComment)
+        post_id = id
+    
+        Comments.create(newComment, email, post_id)
 
         return render(request, 'home.html')

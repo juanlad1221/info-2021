@@ -14,25 +14,31 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-#from django.contrib.auth import login
-#from django.contrib.auth.views import logout_then_login
 from django.urls import path
 from login import views
 from post import views as postViews
 from comments import views as commentViews
 
 
+
 urlpatterns = [
-    #Login y admin
+    #admin django
     path('admin', admin.site.urls, name='admin'),
+    #login
     path('login', views.showLogin, name='login'),
     path('authenticate', views.autenticate, name='authenticate'),
     path('logout', views.logout_view, name='logout'),
-    path('', views.home, name='home'),
     #posts
-    path('allpost', postViews.allPost, name = 'allpost'),
+    path('', postViews.allPost, name='home'),
     #comments
     path('formComment', commentViews.showFormComments, name = 'showFormComments'),
-    path('saveComment/<id>', commentViews.saveComent, name = 'saveComment')
+    path('saveComment/<id>', commentViews.saveComent, name = 'saveComment'),
+    #admin2(propio)
+    path('_admin2',views.showAdmin2, name = '_admin2'),
+    path('_admin2-post',views.showAdmin2Post, name = '_admin2-post'),
+    path('_admin2-post-edit/<id>', views.showAdmin2EditPost, name='_admin2-post-edit'),
+    path('_admin2-post-delete/<id>', views.admin2DeletePost , name='_admin2-post-delete'),
+    path('_admin2-post-new', views.admin2NewPost, name='_admin2-post-new'),
+    path('_admin2-msg', views.admin2Msg, name='_admin2-msg')
 
 ]

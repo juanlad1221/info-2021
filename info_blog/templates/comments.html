@@ -9,12 +9,12 @@
             <br><br>
 
             {% if user.is_authenticated %}
-                <h5>{{user.email}}</h5>
+                <input type="email" placeholder="Email aqui..." value="{{user.email}}" name="e-mail">
             {% else %}
                 <input type="email" placeholder="Email aqui..." name="e-mail">
             {% endif %}
 
-            <button class="btn btn-secondary" type="submit">Comentar</button>
+            <button class="btn btn-secondary ml-2" type="submit">Comentar</button>
         </form>
 
 
