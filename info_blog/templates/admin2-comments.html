@@ -1,0 +1,134 @@
+{% extends 'base-admin.html' %}
+{% load static %}
+
+{% block content %}
+<br><br><br>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
+<div class="div-container">
+    <h2>COMMENTS</h2>
+</div>
+
+<br><br>
+<div class="div-container">
+    <div class="div-add-container">
+        <a href="{% url '_admin2-comment-new' %}">
+            <i class="fas fa-plus-circle fa-2x"></i>
+        </a>
+
+        <table class="table-content" id="example">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>POST</th>
+                    <th>COMMENT</th>
+                    <th>USER</th>
+                    <th>E-MAIL</th>
+                    <th>CREATED COMMENT</th>
+                    <th>ACCION</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {%for i in data.comments%}
+                <input type="text" id="ids" hidden value={{i.comment}}>
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.post_title}}</td>
+                    <td><a href="{% url 'oneComment' i.id %}">link</a></td>
+                    <td>{{data.user}}</td>
+                    <td>{{i.mail}}</td>
+                    <td>{{i.time}}</td>
+                    <td>
+                        <div>
+                            <a class="link" href="{% url '_admin2-comment-edit' i.id %}">
+                                <i class="fas fa-edit mr-3"></i>
+                            </a>
+                            <a class="link">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .bt {
+        border: 1px solid blue;
+    }
+
+
+    .div-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .div-add-container {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .table-content {
+        width: auto;
+        margin-top: 1%;
+    }
+
+    .table-content thead {
+        background-color: gray;
+        text-align: center;
+    }
+
+    .table-content tbody {
+        background-color: rgb(186, 184, 187);
+        text-align: center;
+    }
+
+    .table-content thead th {
+        border: 1px solid gray;
+        padding: 1vh;
+    }
+
+    .table-content tbody td {
+        border: 1px solid gray;
+        padding: 1vh;
+    }
+
+    .fa-edit:hover {
+        color: rgb(158, 158, 23);
+    }
+
+    .fa-trash:hover {
+        color: rgb(180, 12, 12);
+    }
+</style>
+
+<script src="{% static 'static_jquery/js/jquery.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+<script>
+    $('#example tbody').on('click', '.fa-trash', function () {
+        id = $(this).parents("tr").find("td").eq(0).text()
+        trash(id)
+    })
+
+    function trash(id) {
+        var url = "{% url '_admin2-comment-delete' 123 %}";
+
+        let op = confirm('ATENCION: UD. VA A ELIMINAR ESTE COMMENT. ¿DESEA HACERLO?')
+        if (op) {
+            document.location.href = url.replace('123', id);
+        } else {
+            return
+        }
+    }
+</script>
+{% endblock content %}

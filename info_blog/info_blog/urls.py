@@ -32,6 +32,11 @@ urlpatterns = [
     path('', postViews.allPost, name='home'),
     #comments
     path('saveComment', commentViews.saveComment, name = 'saveComment'),
+    path('comments', commentViews.comments, name = 'comments'),
+    path('oneComment/<id>', commentViews.oneComment, name = 'oneComment'),
+    path('_admin2-comment-delete/<id>', commentViews._admin2deleteComment, name = '_admin2-comment-delete'),
+    path('_admin2-comment-new', commentViews._admin2NewComment, name = '_admin2-comment-new'),
+    path('_admin2-comment-edit/<id>', commentViews.admin2EditComment, name = '_admin2-comment-edit'),
     #admin2(propio)
     path('_admin2',views.showAdmin2, name = '_admin2'),
     path('_admin2-post',views.showAdmin2Post, name = '_admin2-post'),

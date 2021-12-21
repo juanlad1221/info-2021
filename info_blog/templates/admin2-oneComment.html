@@ -1,0 +1,26 @@
+{% extends 'base-admin.html' %}
+
+{% block content %}
+<br><br>
+<div class="div-container">
+    <h2>COMMENT</h2>
+
+    <br>
+    <div class="alert alert-primary" role="alert">
+        {{data}}
+    </div>
+
+    <a class="btn btn-secondary" href="{% url 'comments' %}">Back</a>
+</div>
+
+
+<style>
+    .div-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+{% endblock content %}

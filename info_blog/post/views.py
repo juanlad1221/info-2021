@@ -9,7 +9,7 @@ def allPost(request):
     context = {
         'data':result
     }
-    print(type(request.user.id))
+    
     if request.user.id is None:
         context['form'] = CommentForm()
     else:

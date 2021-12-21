@@ -1,0 +1,31 @@
+{% extends 'base-admin.html' %}
+
+{% block content %}
+<br><br>
+<div class="div-content">
+    <h2>NEW COMMENTS</h2>
+</div>
+<br>
+<div class="div-content">
+    <form action="" style="width: 50%;" method="POST">{% csrf_token %}
+        {{form}}
+
+        <a class="btn btn-secondary mt-4 w-1" href="{% url 'comments' %}">Cancel</a>
+        <button type="submit" class="btn btn-secondary mt-4 w-1">Save</button>
+    </form>
+</div>
+<br><br>
+
+
+<style>
+    .div-content {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .w-1 {
+        width: 15%;
+    }
+</style>
+{% endblock content %}
