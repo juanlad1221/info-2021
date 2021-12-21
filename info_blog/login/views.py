@@ -114,15 +114,19 @@ def admin2DeletePost(request, id):
 
 def admin2NewPost(request):
     #creo el context con el form y sus datos p/editar
-    context = {'form':Newform()}
-
+    context = {'form':Newform(initial={'user_id':request.user})}
+    
     #si la peticion es post
     if request.method == "POST":
         formulario = Newform(data=request.POST)
-
+        
         if formulario.is_valid:
-            #grabo el form y envio msg
-            formulario.save()
+             #grabo el form 
+            post_ = formulario.save(commit=False)
+            #incorporo el user
+            post_.user_id = request.user
+            #grabo nuevamente
+            post_.save()
             return redirect('_admin2-post')
         else:
             #envio el form de nuevo
@@ -131,5 +135,3 @@ def admin2NewPost(request):
     return render(request, 'admin2-post-new.html', context)
 
 
-def admin2Msg(request):
-    return render(request, 'admin2-msg.html')

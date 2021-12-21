@@ -5,19 +5,22 @@
 <br><br><br>
 
 <div class="table-container">
-    <h2>TODOS LOS POST</h2>
+    <div>
+        <h2>ALL POST</h2>
+        <hr style="border: 1px solid grey;" />
+    </div>
 </div>
 
-<br>
-<div class="table-container">
-    <div class="div-container">
+<br><br>
+<div class="table-container ">
+    <div class="div-container ">
+
         <div class="div-search">
             <a href="{% url '_admin2-post-new' %}">
                 <i class="fas fa-plus-circle fa-2x"></i>
             </a>
             <input type="text" onkeyup="myFunction()" placeholder="Buscar..." id="myInput">
         </div>
-    
 
         <table class="table-content" id="example">
             <thead>
@@ -29,26 +32,25 @@
                     <th>ACCION</th>
                 </tr>
             </thead>
-
             <tbody>
                 {%for i in data%}
-                       <tr>
-                           <td>{{i.id}}</td>
-                           <td>{{i.title}}</td>
-                           <td>{{i.created}}</td>
-                           <td>{{i.user_id}}</td>
-                           <td>
-                                <div>
-                                    <a class="link" href="{% url '_admin2-post-edit' i.id %}">
-                                        <i class="fas fa-edit mr-3"></i>
-                                    </a>
-                                    <a class="link">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                    
-                                </div>
-                           </td>
-                       </tr> 
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.title}}</td>
+                    <td>{{i.created}}</td>
+                    <td>{{i.user_id}}</td>
+                    <td>
+                        <div>
+                            <a class="link" href="{% url '_admin2-post-edit' i.id %}">
+                                <i class="fas fa-edit mr-3"></i>
+                            </a>
+                            <a class="link">
+                                <i class="fas fa-trash"></i>
+                            </a>
+
+                        </div>
+                    </td>
+                </tr>
                 {%endfor%}
             </tbody>
         </table>
@@ -68,13 +70,14 @@
         justify-content: center;
     }
 
-    .div-container{
+    .div-container {
         display: flex;
         flex-direction: column;
+        width: 70%;
     }
 
-    .div-container input{
-        width: 40%;
+    .div-container input {
+        width: 30%;
         align-self: flex-end;
         border-radius: 10px;
         border: 1px solid gray;
@@ -106,25 +109,25 @@
         padding: 1vh;
     }
 
-    .fa-edit:hover{
+    .fa-edit:hover {
         color: rgb(158, 158, 23);
     }
 
-    .fa-trash:hover{
-        color:rgb(180, 12, 12);
+    .fa-trash:hover {
+        color: rgb(180, 12, 12);
     }
 
-    .fa-plus-circle:hover{
+    .fa-plus-circle:hover {
         color: blue;
     }
 
-    .div-search{
+    .div-search {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
-    .link{
+    .link {
         color: black;
         text-decoration: none;
     }
@@ -133,21 +136,21 @@
 <script src="{% static 'static_jquery/js/jquery.js' %}"></script>
 
 <script>
-$('#example tbody').on( 'click', '.fa-trash', function () {
-    id = $(this).parents("tr").find("td").eq(0).text()
-    trash(id)
-})
+    $('#example tbody').on('click', '.fa-trash', function () {
+        id = $(this).parents("tr").find("td").eq(0).text()
+        trash(id)
+    })
 
-function trash(id){
+    function trash(id) {
         var url = "{% url '_admin2-post-delete' 123 %}";
 
         let op = confirm('ATENCION: UD. VA A ELIMINAR ESTE POST. ¿DESEA HACERLO?')
-        if (op){
-             document.location.href = url.replace('123', id);
-        }else{
+        if (op) {
+            document.location.href = url.replace('123', id);
+        } else {
             return
         }
-}
+    }
 
 </script>
 {% endblock content %}

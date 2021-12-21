@@ -20,14 +20,14 @@ class CommentForm(forms.ModelForm):
 
 
 class newCommentForm(forms.ModelForm):
-    comment = forms.CharField(label='COMMENT', widget=forms.Textarea(attrs={'class':'form-control'}))
+    comment = forms.CharField(label='COMMENT', widget=forms.Textarea(attrs={'class':'form-control mb-4'}))
     email = forms.EmailField(label='EMAIL', widget=forms.EmailInput(attrs={'class':'form-control'}))
     
     class Meta:
         model = Comments
-        fields = ['comment','email','post_id']
+        fields = ['post_id','comment','email']
         widgets={
-            'post_id':widgets.Select(attrs={'class':'form-control'})
+            'post_id':widgets.Select(attrs={'class':'form-control mb-4'})
         }
         labels = {
             'post_id': _('POST'),
@@ -35,7 +35,7 @@ class newCommentForm(forms.ModelForm):
 
 
 class editCommentForm(forms.ModelForm):
-    comment = forms.CharField(label='COMMENT', widget=forms.Textarea(attrs={'class':'form-control'}))
+    comment = forms.CharField(label='COMMENT', widget=forms.Textarea(attrs={'class':'form-control mb-4'}))
     email = forms.EmailField(label='EMAIL', widget=forms.EmailInput(attrs={'class':'form-control'}))
 
     class Meta:

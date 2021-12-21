@@ -8,12 +8,15 @@
 
 
 <div class="div-container">
-    <h2>COMMENTS</h2>
+    <div>
+        <h2>COMMENTS</h2>
+        <hr style="border: 1px solid grey;"/>
+    </div>
 </div>
 
 <br><br>
-<div class="div-container">
-    <div class="div-add-container">
+<div class="div-container ">
+    <div class="div-add-container ">
         <a href="{% url '_admin2-comment-new' %}">
             <i class="fas fa-plus-circle fa-2x"></i>
         </a>
@@ -74,6 +77,7 @@
         display: flex;
         flex-direction: column;
         padding: 0;
+        width: 70%;
     }
 
     .table-content {

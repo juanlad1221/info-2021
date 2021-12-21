@@ -5,10 +5,13 @@
 <br><br><br>
 
     <div class="div-container">
-        <h2>NEW POST</h2>
+        <div>
+            <h2>NEW POST</h2>
+            <hr style="border: 1px solid grey;"/>
+        </div>
     </div>
 
-    <br>
+    <br><br>
     <div class="div-container" >
         {% if msg %}
         <div class="msg-container">
@@ -19,18 +22,18 @@
         </div>
             
         {% else %}
-        <form action="" method="POST" enctype="multipart/form-data" style="width: 30%;">{% csrf_token %}
+        <form action="" method="POST" enctype="multipart/form-data" style="width: 50%;">{% csrf_token %}
     
             {{form}}
 
             <div class="mt-4">
-                <button class="config btn btn-primary" type="submit">save</button>
-                <a class="config btn btn-primary" href="{% url '_admin2-post' %}">cancel</a>
+                <a class="btn btn-secondary w-1" href="{% url '_admin2-post' %}">cancel</a>
+                <button class="config btn btn-secondary w-1" type="submit">save</button>
             </div>
         </form>
         {% endif %}
     </div>
-    <br><br>
+    <br><br><br>
 
 <style>
     .bt{border: 1px solid blue;}
@@ -45,6 +48,7 @@
         display: flex;
         flex-direction: column;
     }
+    .w-1{width: 20%;}
 </style>
 
 {% endblock content %}

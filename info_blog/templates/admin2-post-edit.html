@@ -1,21 +1,24 @@
 {% extends 'base-admin.html' %}
 
 {% block content %}
-
+<br><br><br>
+<div class="d-flex flex-column align-items-center">
+    <div>
+        <h2>NEW POST</h2>
+        <hr style="border: 1px solid grey;"/>
+    </div>
+</div>
 
 <br><br>
 <div class="div-edit-content">
-    <h2>Edit Post</h2>
-   
-    <br>
-    <div style="width: 30%;">
+   <div style="width: 50%;">
         <form action="" method="POST">{% csrf_token %}
     
             {{form}}
 
             <div class="mt-4">
-                <button class="config btn btn-primary" type="submit">save</button>
-                <a class="config btn btn-primary" href="{% url '_admin2-post' %}">cancel</a>
+                <a class="btn btn-secondary w-1" href="{% url '_admin2-post' %}">cancel</a>
+                <button class="config btn btn-secondary w-1" type="submit">save</button>
             </div>
         </form>
     </div>
@@ -37,10 +40,8 @@
         justify-content: center;
     }
 
-    .config {
+    .w-1 {
         width: 20%;
-        color: white;
-        text-decoration: none;
     }
 </style>
 
