@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django_static_jquery',
     'login',
     'post',
-    'comments'
+    'comments',
+    'blog'
 ]
 
 MIDDLEWARE = [

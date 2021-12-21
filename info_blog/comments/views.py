@@ -107,3 +107,5 @@ def admin2EditComment(request,id):
         context['form']=formulario
         
     return render(request, 'admin2-comment-edit.html',context)
+
+

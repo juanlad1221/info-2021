@@ -18,7 +18,7 @@ from django.urls import path
 from login import views
 from post import views as postViews
 from comments import views as commentViews
-
+from blog import views as blogViews
 
 
 urlpatterns = [
@@ -42,7 +42,9 @@ urlpatterns = [
     path('_admin2-post',views.showAdmin2Post, name = '_admin2-post'),
     path('_admin2-post-edit/<id>', views.showAdmin2EditPost, name='_admin2-post-edit'),
     path('_admin2-post-delete/<id>', views.admin2DeletePost , name='_admin2-post-delete'),
-    path('_admin2-post-new', views.admin2NewPost, name='_admin2-post-new')
+    path('_admin2-post-new', views.admin2NewPost, name='_admin2-post-new'),
+    #blog
+    path('ods17', blogViews.ods17, name='ods17'),
     
 
 ]

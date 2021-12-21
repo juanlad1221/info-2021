@@ -11,8 +11,8 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="titlepage-h1">
-                        <h1 class="bnner_title">Welcome To<br>
-                            <span style="color: #787dc2">Content Writing Services</span>
+                        <h1 class="bnner_title">ODS<br>
+                            <span style="color: #787dc2">Salvemos el Mundo</span>
                         </h1>
                         <p class="long_text">It is a long established fact that a reader will be distracted by the
                             readable content of a page when looking </p>
@@ -21,8 +21,8 @@
                 </div>
                 <div class="carousel-item">
                     <div class="titlepage-h1">
-                        <h1 class="bnner_title">Welcome To<br>
-                            <span style="color: #787dc2">Content Writing Services</span>
+                        <h1 class="bnner_title">Solo 17 Pasos<br>
+                            <span style="color: #787dc2">Para mejorar el Mundo</span>
                         </h1>
                         <p class="long_text">It is a long established fact that a reader will be distracted by the
                             readable content of a page when looking </p>
@@ -31,8 +31,8 @@
                 </div>
                 <div class="carousel-item">
                     <div class="titlepage-h1">
-                        <h1 class="bnner_title">Welcome To<br>
-                            <span style="color:#787dc2">Content Writing Services</span>
+                        <h1 class="bnner_title">Juntos<br>
+                            <span style="color:#787dc2">Podemos Hacerlo</span>
                         </h1>
                         <p class="long_text">It is a long established fact that a reader will be distracted by the
                             readable content of a page when looking </p>
@@ -55,7 +55,7 @@
 <div class="services_main">
     <div class="container">
         <div class="creative_taital">
-            <h1 class="creative_text">Creative Content Writing Services</h1>
+            <h1 class="creative_text">Un Mundo Mejor Es Posible</h1>
             <p style="color: #050000; text-align: center;">It is a long established fact that a reader will be
                 distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum
                 is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content
@@ -89,13 +89,10 @@
                         <div class="d-flex flex-column">
                             <form action="{% url 'saveComment' %}" method="POST">{% csrf_token %}
                                 {{form}}
-                        
+
                                 <input type="text" name="post_id" hidden value={{i.id}}>
                                 <button type="submit" class="btn btn-secondary mt-4">Comentar</button>
                             </form>
-                            
-                                
-                            
                         </div>
                     </div>
                     {% endfor %}
@@ -144,49 +141,49 @@
 <!--Contact_section end -->
 
 
-<style>
-    .banner-main {
-        width: 100%;
-        float: left;
-        background-image:url("{% static 'images/bosque.jpg' %}");
-        height: auto;
-        padding-top: 20px;
-        padding-bottom: 226px;
-        background-size: cover;
-    }
+    <style>
+        .banner-main {
+            width: 100%;
+            float: left;
+            background-image:url("{% static 'images/bosque.jpg' %}");
+            height: auto;
+            padding-top: 20px;
+            padding-bottom: 226px;
+            background-size: cover;
+        }
 
-    .services_main {
-        width: 100%;
-        float: left;
-        background-color: #8abb83;
-        height: auto;
-        padding-bottom: 30px;
-        padding-top: 30px;
-    }
+        .services_main {
+            width: 100%;
+            float: left;
+            background-color: #8abb83;
+            height: auto;
+            padding-bottom: 30px;
+            padding-top: 30px;
+        }
 
-    .service_main {
-        width: 100%;
-    }
+        .service_main {
+            width: 100%;
+        }
 
-    .card-content {
-        display: flex;
-        flex-wrap:wrap;
-        width: 80%;
-    }
+        .card-content {
+            display: flex;
+            flex-wrap: wrap;
+            width: 80%;
+        }
 
-    .written_text {
-        width: 100%;
-        float: left;
-        background-color: #072833;
-        height: auto;
-        padding: 20px;
-    }
+        .written_text {
+            width: 100%;
+            float: left;
+            background-color: #072833;
+            height: auto;
+            padding: 20px;
+        }
 
 
-    .seccion1-container {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-    }
-</style>
-{% endblock content %}
+        .seccion1-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+    </style>
+    {% endblock content %}

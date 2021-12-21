@@ -67,16 +67,13 @@
                                 </li>
                                 {% endif %}
                                 <li class="nav-item">
-                                    <a class="nav-link" href="about.html">ABOUT AS</a>
+                                    <a class="nav-link" href="{% url 'ods17' %}">LOS ODS</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="service.html">CONTACT WITH AS</a>
+                                    <a class="nav-link" href="service.html">CONTACT</a>
                                 </li>
                                 <li class="#" href="#">
-                                    <a class="nav-link" href="blog.html">BLOG</a>
-                                </li>
-                                <li class="nav-item" href="#">
-                                    <a class="nav-link" href="">CONTACT</a>
+                                    <a class="nav-link" href="blog.html">ABOUT AS</a>
                                 </li>
                                 <li class="last">
                                     <a class="white" href="{% url 'logout' %}">{{user.username}}</a>
@@ -92,7 +89,7 @@
 
     {% endblock %}
 <style>
-    .header_main{ 
+.header_main{ 
 	width: 100%;
     float: left;
     background-image: url("{% static 'images/unnamed.jpg' %}");
@@ -100,10 +97,11 @@
      
 }
 .bt{border: 1px solid blue;}
+
 .header{ 
 	width: 100%;
 	float: left;
-	background-color: #484b72;
+	background-color: rgb(124, 55, 173);
 	padding-bottom: 10px;
 	padding-top: 10px;
 }
