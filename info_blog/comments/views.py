@@ -41,7 +41,7 @@ def comments(request):
     datos['comments'] = arr
     
     context = {'data':datos}
-    print(context)
+    
     return render(request, 'admin2-comments.html', context)
 
 
@@ -80,7 +80,6 @@ def _admin2NewComment(request):
             #envio el form de nuevo
             context['form'] = formulario
     return render(request, 'admin2-comment-new.html', context)
-
 
 
 def admin2EditComment(request,id):
