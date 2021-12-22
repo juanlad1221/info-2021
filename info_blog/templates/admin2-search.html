@@ -1,0 +1,112 @@
+{% extends 'base-admin.html' %}
+
+{% block content %}
+<br><br>
+<div class="d-flex flex-column align-items-center">
+    <div>
+        <h2>SEARCH</h2>
+        <hr style="border: 1px solid grey;" />
+    </div>
+</div>
+
+<br><br>
+<div class="d-flex justify-content-center p-5">
+    <div class="bt d-flex justify-content-center" style="width: 80%;">
+        
+        <table class="table-content" id="example">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>POST TITLE</th>
+                    <th>COMMENT</th>
+                    <th>USER</th>
+                    <th>E-MAIL</th>
+                    <th>CREATED COMMENT</th>
+                    <th>ACCION</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <div class="" style="width: 30%;">
+
+        <div class="form-control d-flex flex-column mb-5" style="width: 100%; background-color: rgb(175, 172, 172);">
+            <label for="">Filter for: Date</label>
+            <select class="form-control mb-3" name="select-mes" id="">
+                <option value="#" disabled selected>---</option>
+                <option value="1">ENERO</option>
+                <option value="2">FEBERO</option>
+                <option value="3">MARZO</option>
+                <option value="4">ABRIL</option>
+                <option value="5">MAYO</option>
+                <option value="6">JUNIO</option>
+                <option value="7">JULIO</option>
+                <option value="8">AGOSTO</option>
+                <option value="9">SETIEMBRE</option>
+                <option value="10">OCTUBRE</option>
+                <option value="11">NOBIEMBRE</option>
+                <option value="12">DICIEMBRE</option>
+            </select>
+            <button type="submit" class="btn btn-secondary align-self-end">Go</button>
+        </div>
+
+        <div class="form-control d-flex flex-column" style="width: 100%; background-color: rgb(175, 172, 172);">
+            <label for="">Filter for: Category</label>
+            <select class="form-control mb-3" name="select-category" id="">
+                <option value="#" disabled selected>---</option>
+                {% for i in select %}
+                    <option value={{i}}>{{i}}</option>
+                {% endfor %}
+                <!--hg-->
+            </select>
+            <button type="submit" class="btn btn-secondary align-self-end">Go</button>
+        </div>
+
+    </div>
+</div>
+
+
+<!--
+    <div class="form-control" style="width: 30%;">
+                    <label for="">Filter for:</label>
+                    <select class="form-control mb-3" name="" id="">
+                        <option value="">1hjhkk</option>
+                    </select>
+                    <button type="submit" class="btn btn-secondary">Go</button>
+                </div>
+    
+    
+    
+    
+    <table class="table-content" id="example">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>POST TITLE</th>
+                            <th>COMMENT</th>
+                            <th>USER</th>
+                            <th>E-MAIL</th>
+                            <th>CREATED COMMENT</th>
+                            <th>ACCION</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    </tbody>
+                </table>-->
+
+<style>
+    .bt {
+        border: 1px solid blue;
+    }
+
+    .div-container {
+        width: 70%;
+    }
+</style>
+{% endblock content %}

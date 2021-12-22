@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render , get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from post import *
-from post.models import Post
+from post.models import Category, Post
 from post.forms import Editform, Newform
 
 
@@ -135,3 +135,11 @@ def admin2NewPost(request):
     return render(request, 'admin2-post-new.html', context)
 
 
+def admin2Search(request):
+    select = Category.objects.all()
+    context = {
+        'select':select,
+        'table':False
+    }
+
+    return render(request, 'admin2-search.html', context)
