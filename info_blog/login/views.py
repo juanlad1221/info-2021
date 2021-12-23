@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.shortcuts import redirect, render , get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+import datetime
 from post import *
 from post.models import Category, Post
 from post.forms import Editform, Newform
@@ -60,10 +61,8 @@ def showAdmin2(request):
 
 
 def showAdmin2Post(request):
-    #obtengo el id usuario
-    id_user = request.user.id
     #Obtiene los post activos
-    result = Post.objects.filter(user_id = id_user).filter(active = 1)
+    result = Post.objects.filter(active = 1)
     #si la consulta fue exitosa
     if result:
         context = {'data':result}
@@ -86,6 +85,7 @@ def showAdmin2EditPost(request, id):
 
     #si la peticion es post
     if request.method == "POST":
+        print(request.POST)
         #le paso al form la peticion con los datos y la busqueda por id
         formulario = Editform(data=request.POST, instance=result)
         #verifica los datos del form
@@ -141,5 +141,33 @@ def admin2Search(request):
         'select':select,
         'table':False
     }
-
     return render(request, 'admin2-search.html', context)
+
+
+'''def admin2SearchMes(request):
+    select = Category.objects.all()
+    datos = Post.objects.raw("SELECT * from post_post WHERE created BETWEEN '2021-12-01' and '2021-12-31'")
+    
+
+
+    context = {
+        'select':select,
+        'table':datos
+    }
+
+    if request.POST:
+        #print(request.POST['select-mes'])
+        return render(request, 'admin2-search.html', context)
+
+
+def admin2SearchCategory(request):
+    select = Category.objects.all()
+    context = {
+        'select':select,
+        
+    }
+
+    if request.POST:
+        print(request.POST['select-category'])
+        return render(request, 'admin2-search.html', context)
+'''

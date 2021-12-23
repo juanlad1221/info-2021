@@ -13,8 +13,8 @@ class Category(models.Model):
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=50)
-    content = models.CharField(max_length=500)
+    title = models.CharField(max_length=500)
+    content = models.CharField(max_length=1500)
     created = models.DateTimeField(default=timezone.now)
     active = models.BooleanField(default=True)
     category_id = models.ForeignKey(Category, on_delete=models.CASCADE)
