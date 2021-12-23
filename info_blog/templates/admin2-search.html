@@ -12,25 +12,30 @@
 
 <br><br>
 <div class="d-flex justify-content-center p-5">
-    <div class="bt d-flex justify-content-center" style="width: 80%;">
+    <div class="bt d-flex justify-content-center p-3" style="width: 80%;">
 
         <table class="table-content" id="example">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>POST TITLE</th>
-                    <th>COMMENT</th>
+                    <th>CREATED</th>
+                    <th>CATEGORY</th>
                     <th>USER</th>
-                    <th>E-MAIL</th>
-                    <th>CREATED COMMENT</th>
-                    <th>ACCION</th>
+
                 </tr>
             </thead>
 
             <tbody>
-                
-                    {
-               
+                {%for i in table%}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.title}}</td>
+                    <td>{{i.created}}</td>
+                    <td>{{i.category_id}}</td>
+                    <td>{{i.user_id}}</td>
+                </tr>
+                {%endfor%}
             </tbody>
         </table>
 
@@ -40,7 +45,7 @@
     <div class="" style="width: 30%;">
 
         <div class="form-control d-flex flex-column mb-5" style="width: 100%; background-color: rgb(175, 172, 172);">
-            <form action="" method="post">{% csrf_token %}
+            <form action="{% url '_admin2-search-mes' %}" method="post">{% csrf_token %}
 
                 <label for="">Filter for: Date</label>
                 <select class="form-control mb-3" name="select-mes" id="">
@@ -58,7 +63,7 @@
                     <option value="11">NOBIEMBRE</option>
                     <option value="12">DICIEMBRE</option>
                 </select>
-                <button type="submit"  class="btn btn-secondary align-self-end">Go</button>
+                <button type="submit" class="btn btn-secondary align-self-end">Go</button>
 
             </form>
         </div>
@@ -120,5 +125,31 @@
     .div-container {
         width: 70%;
     }
+
+    .table-content {
+        width: auto;
+        margin-top: 1%;
+    }
+
+    .table-content thead {
+        background-color: gray;
+        text-align: center;
+    }
+
+    .table-content tbody {
+        background-color: rgb(186, 184, 187);
+        text-align: center;
+    }
+
+    .table-content thead th {
+        border: 1px solid gray;
+        padding: 1vh;
+    }
+
+    .table-content tbody td {
+        border: 1px solid gray;
+        padding: 1vh;
+    }
+
 </style>
 {% endblock content %}

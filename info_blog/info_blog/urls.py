@@ -44,7 +44,7 @@ urlpatterns = [
     path('_admin2-post-delete/<id>', views.admin2DeletePost , name='_admin2-post-delete'),
     path('_admin2-post-new', views.admin2NewPost, name='_admin2-post-new'),
     path('_admin2-search', views.admin2Search, name='_admin2-search'),
-    #path('_admin2-search-mes', views.admin2SearchMes, name='_admin2-search-mes'),
+    path('_admin2-search-mes', views.admin2SearchMes, name='_admin2-search-mes'),
     #path('_admin2-search-category', views.admin2SearchCategory, name='_admin2-search-category'),
     #blog
     path('ods17', blogViews.ods17, name='ods17'),

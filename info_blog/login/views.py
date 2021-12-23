@@ -3,10 +3,14 @@ from django.contrib import messages
 from django.shortcuts import redirect, render , get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-import datetime
+from datetime import date
+from datetime import datetime, timedelta
 from post import *
 from post.models import Category, Post
 from post.forms import Editform, Newform
+
+
+
 
 
 #vistas de login
@@ -139,17 +143,22 @@ def admin2Search(request):
     select = Category.objects.all()
     context = {
         'select':select,
-        'table':False
+        'table':[]
     }
     return render(request, 'admin2-search.html', context)
 
 
-'''def admin2SearchMes(request):
-    select = Category.objects.all()
-    datos = Post.objects.raw("SELECT * from post_post WHERE created BETWEEN '2021-12-01' and '2021-12-31'")
+def admin2SearchMes(request):
     
-
-
+    inicio = str(date.today().year)+ '-' + request.POST['select-mes']+ '- 01'
+    mes_siguiente = int(str(date.today().year)+ '-' + str(int(request.POST['select-mes']) + 1)+ '- 01')
+    
+    fin = datetime(date.today().year, mes_siguiente, 1) - timedelta(days=1)
+   
+    print(inicio, fin)
+    select = Category.objects.all()
+    datos = Post.objects.raw('SELECT * from post_post WHERE created BETWEEN %s and %s',[inicio,fin])
+    
     context = {
         'select':select,
         'table':datos
@@ -159,7 +168,7 @@ def admin2Search(request):
         #print(request.POST['select-mes'])
         return render(request, 'admin2-search.html', context)
 
-
+'''
 def admin2SearchCategory(request):
     select = Category.objects.all()
     context = {
