@@ -6,7 +6,7 @@ Integrantes: juan campos - Ignacio Lencinas - Gillermo Aguirre
 
 Trabajo: Blog sobre Ecologia.
 
-Video:
+Video: https://youtu.be/8tQOpvJrdBw
 
 Tecnologias: Django - SqlLite3 - Bootstrap - Javascripts
 
