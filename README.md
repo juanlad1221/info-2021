@@ -2,7 +2,7 @@
 Proyecto para el informatorio 2021
 
 Grupo: Python Devs
-Integrantes: juan campos - Ignacio Lencinas - Gillermo Aguirre
+Integrantes: juan campos - Ignacio Lencinas - Franco Dure - Gillermo Aguirre
 
 Trabajo: Blog sobre Ecologia.
 
