@@ -6,13 +6,12 @@
     <div>
         <h2>SEARCH</h2>
         <hr style="border: 1px solid grey;" />
-        <p>No se Pudo terminar...</p>
     </div>
 </div>
 
-<br><br>
+<br>
 <div class="d-flex justify-content-center p-5">
-    <div class="bt d-flex justify-content-center p-3" style="width: 80%;">
+    <div class="d-flex justify-content-center p-3" style="width: 80%;">
 
         <table class="table-content" id="example">
             <thead>
@@ -27,15 +26,21 @@
             </thead>
 
             <tbody>
-                {%for i in table%}
-                <tr>
-                    <td>{{i.id}}</td>
-                    <td>{{i.title}}</td>
-                    <td>{{i.created}}</td>
-                    <td>{{i.category_id}}</td>
-                    <td>{{i.user_id}}</td>
-                </tr>
-                {%endfor%}
+                {% if not table %}
+                    <tr>
+                        <td colspan="5">No Data...</td>
+                    </tr>
+                {%else%}
+                    {%for i in table%}
+                    <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.title}}</td>
+                        <td>{{i.created}}</td>
+                        <td>{{i.category_id}}</td>
+                        <td>{{i.user_id}}</td>
+                    </tr>
+                    {%endfor%}
+                {%endif%}
             </tbody>
         </table>
 
@@ -48,38 +53,38 @@
             <form action="{% url '_admin2-search-mes' %}" method="post">{% csrf_token %}
 
                 <label for="">Filter for: Date</label>
-                <select class="form-control mb-3" name="select-mes" id="">
-                    <option value="#" disabled selected>---</option>
-                    <option value="1">ENERO</option>
-                    <option value="2">FEBERO</option>
-                    <option value="3">MARZO</option>
-                    <option value="4">ABRIL</option>
-                    <option value="5">MAYO</option>
-                    <option value="6">JUNIO</option>
-                    <option value="7">JULIO</option>
-                    <option value="8">AGOSTO</option>
-                    <option value="9">SETIEMBRE</option>
+                <select class="form-control mb-3" onchange=ShowSelected() name="select-mes" id="select-mes">
+                    <option value="---" disabled selected>---</option>
+                    <option value="01">ENERO</option>
+                    <option value="02">FEBERO</option>
+                    <option value="03">MARZO</option>
+                    <option value="04">ABRIL</option>
+                    <option value="05">MAYO</option>
+                    <option value="06">JUNIO</option>
+                    <option value="07">JULIO</option>
+                    <option value="08">AGOSTO</option>
+                    <option value="09">SETIEMBRE</option>
                     <option value="10">OCTUBRE</option>
                     <option value="11">NOBIEMBRE</option>
                     <option value="12">DICIEMBRE</option>
                 </select>
-                <button type="submit" class="btn btn-secondary align-self-end">Go</button>
+                <button type="submit" id="btn-mes" disabled class="btn btn-secondary align-self-end">Go</button>
 
             </form>
         </div>
 
         <div class="form-control d-flex flex-column" style="width: 100%; background-color: rgb(175, 172, 172);">
-            <form action="" method="post">{% csrf_token %}
+            <form action="{% url '_admin2-search-category' %}" method="post">{% csrf_token %}
 
                 <label for="">Filter for: Category</label>
-                <select class="form-control mb-3" name="select-category" id="">
+                <select class="form-control mb-3" onchange=ShowSelected2() name="select-category" id="select-category">
                     <option value="#" disabled selected>---</option>
                     {% for i in select %}
-                    <option value={{i}}>{{i}}</option>
+                    <option value={{i.id}}>{{i}}</option>
                     {% endfor %}
                     <!--hg-->
                 </select>
-                <button type="submit" class="btn btn-secondary align-self-end">Go</button>
+                <button type="submit" disabled id="btn-category" class="btn btn-secondary align-self-end">Go</button>
 
             </form>
         </div>
@@ -152,4 +157,24 @@
     }
 
 </style>
+
+<script>
+function ShowSelected(){
+/* Para obtener el valor */
+let btn = document.getElementById("btn-mes")
+var cod = document.getElementById("select-mes").value;
+if(cod != '---'){
+    btn.removeAttribute("disabled");
+}
+}
+
+function ShowSelected2(){
+/* Para obtener el valor */
+let btn = document.getElementById("btn-category")
+var cod = document.getElementById("select-category").value;
+if(cod != '---'){
+    btn.removeAttribute("disabled");
+}
+}
+</script>
 {% endblock content %}

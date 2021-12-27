@@ -149,34 +149,39 @@ def admin2Search(request):
 
 
 def admin2SearchMes(request):
-    
-    inicio = str(date.today().year)+ '-' + request.POST['select-mes']+ '- 01'
-    mes_siguiente = int(str(date.today().year)+ '-' + str(int(request.POST['select-mes']) + 1)+ '- 01')
-    
-    fin = datetime(date.today().year, mes_siguiente, 1) - timedelta(days=1)
-   
-    print(inicio, fin)
+    #obtengo el primer dia del mes para la busqueda
+    inicio = str(date.today().year)+ '-' + request.POST['select-mes']+ '-01'
+    #obtengo el ultimo dia del mes
+    mes_sig = int(request.POST['select-mes']) + 1
+    if mes_sig == 13:
+        mes_sig = 1
+        año = date.today().year + 1
+    else:
+        año = date.today().year
+    fin = datetime(año, mes_sig, 1) - timedelta(days=1)
+
+    #hago la busqueda
+    datos = Post.objects.raw('SELECT * from post_post WHERE created BETWEEN %s and %s AND active = 1',[inicio,fin])
+    #busco todas las categorias para el select
     select = Category.objects.all()
-    datos = Post.objects.raw('SELECT * from post_post WHERE created BETWEEN %s and %s',[inicio,fin])
-    
+    context = {
+        'select':select,
+        'table': datos
+    }
+
+    return render(request, 'admin2-search.html', context)
+
+
+def admin2SearchCategory(request):
+    #obtiene el id de la categoria del post a buscar
+    id = request.POST['select-category']
+    #se buscan todas las categorias
+    select = Category.objects.all()
+    #se obtiene los post segun categoria
+    datos = Post.objects.filter(active = 1).filter(category_id = id)
     context = {
         'select':select,
         'table':datos
     }
+    return render(request, 'admin2-search.html', context)
 
-    if request.POST:
-        #print(request.POST['select-mes'])
-        return render(request, 'admin2-search.html', context)
-
-'''
-def admin2SearchCategory(request):
-    select = Category.objects.all()
-    context = {
-        'select':select,
-        
-    }
-
-    if request.POST:
-        print(request.POST['select-category'])
-        return render(request, 'admin2-search.html', context)
-'''

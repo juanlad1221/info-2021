@@ -74,7 +74,7 @@
                                     <a class="nav-link" href="blog.html">ABOUT AS</a>
                                 </li>
                                 <li class="last">
-                                    <a class="white" href="{% url 'logout' %}">{{user.username}}</a>
+                                    <a class="white" data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="{% url 'logout' %}">{{user.username}}</a>
                                 </li>
                             </ul>
                         </div>
