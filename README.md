@@ -20,6 +20,17 @@ Instrucciones:
 
 3- Correr el servidor: posicionarse a la altura del archivo manage.py y correr: py manage.py runserver
 
+Credenciales:
+
+admin
+user: juan@gmail.com
+pass: 1234
+
+writer
+user: brahim@gmail.com
+pass: virtual2021
+
+
 
 
 
