@@ -68,10 +68,10 @@
                                     <a class="nav-link" href="{% url 'ods17' %}">LOS ODS</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="service.html">CONTACT</a>
+                                    <a class="nav-link" href="{% url 'contact' %}">CONTACT</a>
                                 </li>
                                 <li class="#" href="#">
-                                    <a class="nav-link" href="blog.html">ABOUT AS</a>
+                                    <a class="nav-link" href="{% url 'about' %}">ABOUT AS</a>
                                 </li>
                                 <li class="last">
                                     <a class="white" data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="{% url 'logout' %}">{{user.username}}</a>

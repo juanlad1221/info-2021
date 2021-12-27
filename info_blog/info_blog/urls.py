@@ -48,6 +48,8 @@ urlpatterns = [
     path('_admin2-search-category', views.admin2SearchCategory, name='_admin2-search-category'),
     #blog
     path('ods17', blogViews.ods17, name='ods17'),
+    path('contact', blogViews.contact, name='contact'),
+    path('about', blogViews.about, name='about'),
     
 
 ]
