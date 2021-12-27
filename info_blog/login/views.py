@@ -65,8 +65,9 @@ def showAdmin2(request):
 
 
 def showAdmin2Post(request):
-    #Obtiene los post activos
-    result = Post.objects.filter(active = 1)
+    #Obtiene los post activos y del user
+    user = request.user.id
+    result = Post.objects.filter(active = 1).filter(user_id = user)
     #si la consulta fue exitosa
     if result:
         context = {'data':result}
