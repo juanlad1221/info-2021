@@ -13,7 +13,7 @@ def saveComment(request):
         
         if form.is_valid:
             form.save()
-            return render(request, 'home.html',{})
+            return redirect('home')
         else:
             form = CommentForm()
     else:
@@ -109,3 +109,11 @@ def admin2EditComment(request,id):
     return render(request, 'admin2-comment-edit.html',context)
 
 
+def commentDetail(request, id):
+    comments = Comments.objects.filter(active = 1).filter(post_id = id)
+    
+    context = {
+        'data':comments,
+        'name_post':comments[0].post_id
+    }
+    return render(request, 'comment-detail.html', context)
